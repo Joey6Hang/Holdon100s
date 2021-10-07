@@ -1,0 +1,60 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-image: url('img/wallhaven-dpo38l_1920x1080.png');
+}
+
+#canvas {
+  border: 1px solid white;
+  width: 1000px;
+  height: 580px;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50% , -50%);
+  box-shadow: 0,0,10px #333;
+  cursor: none;
+}
+
+#tiaozhan {
+  width: 200px;
+  height: 100px;
+
+}
+
+#btnstart {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 15%;
+  background-color: saddlebrown;
+  color:gold;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  position: fixed;
+  bottom: 30px;
+  left: 900px;
+}
+
+#hunscd {
+  position: fixed;
+  top: 30px;
+}
+
+#tiaozhan {
+  position: fixed;
+  right: -20px;
+  width: 800px;
+  height: 400px;
+  top: -180px;
+}
+
+#good {
+  width: 400px;
+  height: 400px;
+  position: absolute;
+  top: 260px;
+  left: 760px;
+  display: none;
+}
