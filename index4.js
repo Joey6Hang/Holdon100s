@@ -14,10 +14,10 @@ const cRect = canvas.getBoundingClientRect(); //方法返回元素的大小及�
 let balls = [];
 let run = false;
 
-canvas.width = 1100;
-canvas.height = 580;
+canvas.width = 850;
+canvas.height = 540;
 
-const mouse = { x: 0, y: 0 };
+let mouse = { x: 0, y: 0 };
 
 btnstart.onclick = function(){
   run = true;
@@ -29,68 +29,30 @@ btnstart.onclick = function(){
   console.log('click');
 }
 
-// function btnstart(){
-//   btnstart.innerHTML = 'Start';
-//   btnstart.setAttribute ('id', 'btnstart');
-// }
-// function btnreset (){
-//   btnstart.innerHTML = 'Reset';
-//   btnstart.setAttribute ('id' , 'btnreset');
-// }
-
-// btnreset.onclick = function(){
-//   run = true;
-//   draw();
-//   newball();
-//    ballId = setInterval(newball, 1000);
-//    drawId = setInterval(draw, 2);
-//   console.log('click');
-// }
-
-// btnstart.addEventListener('click', function(){
-//   if(btnstart.innerHTML === 'Start') {
-//     btnstart();
-//   } else{
-//     btnreset();
-//   }
-// })
-
 function random(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
 function newball() {
   balls.push({
-    sx: 1099,
-    sy: 579,
+    sx: 845,
+    sy: 535,
     vx: random(1, 2.5),
     vy: random(1, 2),
   });
 }
 
-function randomColor() {
-  return (
-    "rgb(" +
-    random(0, 255) +
-    ", " +
-    random(0, 255) +
-    ", " +
-    random(0, 255) +
-    ")"
-  );
-}
 
 window.addEventListener("mousemove", function (evt) {
-  const x = evt.clientX - cRect.left;
-  const y = evt.clientY - cRect.top;
-  if (x < 800 && x > 0 && y < 550 && y > 0) {
+  let x = evt.clientX - cRect.left;
+  let y = evt.clientY - cRect.top;
+  if (x < 850 && x > 0 && y < 540 && y > 0) {
     mouse.x = x;
     mouse.y = y;
   }
 });
 
 function draw() {
-  console.log(run);
   if (run) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -101,7 +63,7 @@ function draw() {
 
     ctx.fillStyle = "red";
     ctx.beginPath();
-    ctx.arc(mouse.x, mouse.y, 5, 0, 2 * Math.PI);
+    ctx.arc(x, y, 5, 0, 2 * Math.PI);
     ctx.fill();
     ctx.fillStyle = "white";
     for (let i = 0; i < balls.length; i++) {
@@ -111,10 +73,10 @@ function draw() {
       ctx.fill();
       ball.sx += ball.vx;
       ball.sy += ball.vy;
-      if (ball.sx < 0 || ball.sx > 800) {
+      if (ball.sx < 0 || ball.sx > 850) {
         ball.vx = -ball.vx;
       }
-      if (ball.sy < 0 || ball.sy > 550) {
+      if (ball.sy < 0 || ball.sy > 540) {
         ball.vy = -ball.vy;
       }
       if (Math.abs(ball.sx - mouse.x) < 4 && Math.abs(ball.sy - mouse.y) < 4) {
@@ -141,10 +103,9 @@ function gameOver() {
 function winner(){
   balls = [];
   imgood.style.display = "block";
+  alert(`YOU WIIIIIN!!!  GOT 100SECONDS!! `);
     run = false;
     clearInterval(ballId);
     clearInterval(drawId);
-    alert(`YOU WIIIIIN!!!  GOT 100SECONDS!! `);
-
 }
 
