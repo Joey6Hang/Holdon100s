@@ -4,10 +4,13 @@ var ctx = canvas.getContext("2d");
 var btnstart = document.getElementById('btnstart');
 var beginmuc = new Audio ('img/begin.mp3');
 var fallmuc = new Audio ('img/fall_2.mp3');
+var bgmmuc = new Audio ('./img/Endless Summer You – Roa (No Copyright Music).mp3')
 let ballId = null;
 let drawId = null;
 
+
 let imgood = document.getElementById("good");
+let imgcheep = document.getElementById("cheep");
 
 
 const cRect = canvas.getBoundingClientRect(); //方法返回元素的大小及其相对于视口的位置。矩形盒子。
@@ -22,11 +25,12 @@ let mouse = { x: 0, y: 0 };
 btnstart.onclick = function(){
   run = true;
   beginmuc.play();
+  bgmmuc.play();
   draw();
   newball();
    ballId = setInterval(newball, 1000);
    drawId = setInterval(draw, 2);
-  console.log('click');
+   imgcheep.style.display = "none";
 }
 
 function random(min, max) {
@@ -37,8 +41,8 @@ function newball() {
   balls.push({
     sx: 845,
     sy: 535,
-    vx: random(1, 2.5),
-    vy: random(1, 2),
+    vx: random(1, 4),
+    vy: random(1, 3),
   });
 }
 
@@ -63,7 +67,7 @@ function draw() {
 
     ctx.fillStyle = "red";
     ctx.beginPath();
-    ctx.arc(x, y, 5, 0, 2 * Math.PI);
+    ctx.arc(mouse.x, mouse.y, 5, 0, 2 * Math.PI);
     ctx.fill();
     ctx.fillStyle = "white";
     for (let i = 0; i < balls.length; i++) {
@@ -81,6 +85,7 @@ function draw() {
       }
       if (Math.abs(ball.sx - mouse.x) < 4 && Math.abs(ball.sy - mouse.y) < 4) {
         fallmuc.play();
+        imgcheep.style.display = "block";
         gameOver();
       }
       if (balls.length == 101){
@@ -92,8 +97,8 @@ function draw() {
 
 
 function gameOver() {
-  balls = [];
   alert(`gameover YOU HELD ON FOR ${balls.length} s`);
+  balls = [];
   run = false;
   clearInterval(ballId);
   clearInterval(drawId);

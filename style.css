@@ -58,3 +58,12 @@ body{
   left: 760px;
   display: none;
 }
+
+#cheep {
+  width: 500px;
+  height: 400px;
+  position: absolute;
+  top: 200px;
+  left: 730px;
+  display: none;
+}
