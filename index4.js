@@ -14,8 +14,8 @@ const cRect = canvas.getBoundingClientRect(); //方法返回元素的大小及�
 let balls = [];
 let run = false;
 
-canvas.width = 800;
-canvas.height = 550;
+canvas.width = 1100;
+canvas.height = 580;
 
 const mouse = { x: 0, y: 0 };
 
@@ -61,8 +61,8 @@ function random(min, max) {
 
 function newball() {
   balls.push({
-    sx: 799,
-    sy: 549,
+    sx: 1099,
+    sy: 579,
     vx: random(1, 2.5),
     vy: random(1, 2),
   });
@@ -121,7 +121,7 @@ function draw() {
         fallmuc.play();
         gameOver();
       }
-      if (balls.length == 5){
+      if (balls.length == 101){
         winner();
       }
     }
