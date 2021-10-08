@@ -1,4 +1,4 @@
-var canvas = document.querySelector("#canvas");
+var canvas = document.getElementById('canvas');
 var ctx = canvas.getContext("2d");
 
 var btnstart = document.getElementById('btnstart');
@@ -13,7 +13,7 @@ let imgood = document.getElementById("good");
 let imgcheep = document.getElementById("cheep");
 
 
-const cRect = canvas.getBoundingClientRect(); //方法返回元素的大小及其相对于视口的位置。矩形盒子。
+const cRect = canvas.getBoundingClientRect(); 
 let balls = [];
 let run = false;
 
