@@ -1,4 +1,4 @@
-var canvas = document.querySelector("canvas");
+var canvas = document.querySelector("#canvas");
 var ctx = canvas.getContext("2d");
 
 var btnstart = document.getElementById('btnstart');
@@ -22,6 +22,14 @@ canvas.height = 540;
 
 let mouse = { x: 0, y: 0 };
 
+// document.onkeyup = function(event){
+//   let e = event || window.event
+//   if (e&& e.keyCode == 32){
+//     btnstart.onclick();
+//     e.disabled = false;
+//   }
+// }
+
 btnstart.onclick = function(){
   run = true;
   beginmuc.play();
@@ -31,6 +39,7 @@ btnstart.onclick = function(){
    ballId = setInterval(newball, 1000);
    drawId = setInterval(draw, 2);
    imgcheep.style.display = "none";
+   btnstart.disabled = true;
 }
 
 function random(min, max) {
@@ -41,7 +50,7 @@ function newball() {
   balls.push({
     sx: 845,
     sy: 535,
-    vx: random(1, 4),
+    vx: random(1, 2),
     vy: random(1, 3),
   });
 }
@@ -102,6 +111,8 @@ function gameOver() {
   run = false;
   clearInterval(ballId);
   clearInterval(drawId);
+  btnstart.disabled = false;
+
 }
 
 
@@ -112,5 +123,7 @@ function winner(){
     run = false;
     clearInterval(ballId);
     clearInterval(drawId);
+    btnstart.disabled = false;
+
 }
 
