@@ -9,7 +9,7 @@ body{
 #canvas {
   border: 1px solid rgb(203, 142, 228);
   width: 850px;
-  height: 540px;
+  height: 420px;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -19,27 +19,38 @@ body{
 }
 
 #tiaozhan {
-  width: 200px;
-  height: 100px;
-
+  position: fixed;
+  width: 550px;
+  height: 210px;
+  right: 162px;
+  top: -90px;
 }
 
 #btnstart {
   width: 100px;
   height: 50px;
   font-size: 20px;
-  border-radius: 15%;
-  background-color: saddlebrown;
+  font-weight: bold;
+  border-radius: 10%;
+  background-color: rgb(28, 79, 173);
   color:gold;
   font-family:Verdana, Geneva, Tahoma, sans-serif;
   position: fixed;
-  bottom: 60px;
-  left: 900px;
+  bottom: 23px;
+  left: 47%;
+}
+
+#btnstart:hover {
+  background-color: bisque;
+  color: darkorchid;
 }
 
 #hunscd {
   position: fixed;
-  top: 30px;
+  top: 6px;
+  height: 212px;
+  width: 580px;
+  left: 180px;
 }
 
 #tiaozhan {
@@ -51,19 +62,19 @@ body{
 }
 
 #good {
-  width: 400px;
-  height: 400px;
+  width: 262px;
+  height: 321px;
   position: absolute;
-  top: 260px;
-  left: 760px;
+  top: 23%;
+  left: 40%;
   display: none;
 }
 
 #cheep {
-  width: 500px;
-  height: 400px;
+  width: 300px;
+  height: 290px;
   position: absolute;
-  top: 200px;
-  left: 730px;
+  top: 27%;
+  left: 38%;
   display: none;
 }

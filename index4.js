@@ -18,7 +18,7 @@ let balls = [];
 let run = false;
 
 canvas.width = 850;
-canvas.height = 540;
+canvas.height = 420;
 
 let mouse = { x: 0, y: 0 };
 
@@ -48,10 +48,10 @@ function random(min, max) {
 
 function newball() {
   balls.push({
-    sx: 845,
-    sy: 535,
-    vx: random(1, 2),
-    vy: random(1, 3),
+    sx: 849,
+    sy: 419,
+    vx: random(1, 3),
+    vy: random(1.5, 3),
   });
 }
 
@@ -59,7 +59,7 @@ function newball() {
 window.addEventListener("mousemove", function (evt) {
   let x = evt.clientX - cRect.left;
   let y = evt.clientY - cRect.top;
-  if (x < 850 && x > 0 && y < 540 && y > 0) {
+  if (x < 850 && x > 0 && y < 420 && y > 0) {
     mouse.x = x;
     mouse.y = y;
   }
@@ -89,7 +89,7 @@ function draw() {
       if (ball.sx < 0 || ball.sx > 850) {
         ball.vx = -ball.vx;
       }
-      if (ball.sy < 0 || ball.sy > 540) {
+      if (ball.sy < 0 || ball.sy > 420) {
         ball.vy = -ball.vy;
       }
       if (Math.abs(ball.sx - mouse.x) < 4 && Math.abs(ball.sy - mouse.y) < 4) {
