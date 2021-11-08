@@ -36,10 +36,10 @@ btnstart.onclick = function(){
   bgmmuc.play();
   draw();
   newball();
-   ballId = setInterval(newball, 1000);
-   drawId = setInterval(draw, 2);
-   imgcheep.style.display = "none";
-   btnstart.disabled = true;
+  ballId = setInterval(newball, 850);
+  drawId = setInterval(draw, 2);
+  imgcheep.style.display = "none";
+  btnstart.disabled = true;
 }
 
 function random(min, max) {
@@ -48,10 +48,10 @@ function random(min, max) {
 
 function newball() {
   balls.push({
-    sx: 849,
+    sx: (849 || 1),
     sy: 419,
-    vx: random(1, 3),
-    vy: random(1.5, 3),
+    vx: (0.2 - Math.random())*1.5,
+    vy: (0.2 - Math.random())*1.5,
   });
 }
 
@@ -82,7 +82,7 @@ function draw() {
     for (let i = 0; i < balls.length; i++) {
       ball = balls[i];
       ctx.beginPath();
-      ctx.arc(ball.sx, ball.sy, 3, 0, 2 * Math.PI);
+      ctx.arc(ball.sx, ball.sy, 7, 0, 2 * Math.PI);
       ctx.fill();
       ball.sx += ball.vx;
       ball.sy += ball.vy;
@@ -92,12 +92,12 @@ function draw() {
       if (ball.sy < 0 || ball.sy > 420) {
         ball.vy = -ball.vy;
       }
-      if (Math.abs(ball.sx - mouse.x) < 4 && Math.abs(ball.sy - mouse.y) < 4) {
+      if (Math.abs(ball.sx - mouse.x) < 7 && Math.abs(ball.sy - mouse.y) < 7) {
         fallmuc.play();
         imgcheep.style.display = "block";
         gameOver();
       }
-      if (balls.length == 101){
+      if (balls.length == 60){
         winner();
       }
     }
@@ -106,7 +106,8 @@ function draw() {
 
 
 function gameOver() {
-  alert(`gameover YOU HELD ON FOR ${balls.length} s`);
+  alert(`LOOOOSE`);
+  alert(`YOU HELD ON FOR ${balls.length} s`);
   balls = [];
   run = false;
   clearInterval(ballId);
@@ -124,6 +125,5 @@ function winner(){
     clearInterval(ballId);
     clearInterval(drawId);
     btnstart.disabled = false;
-
 }
 
